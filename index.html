@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signature Restaurant | Texas Hill Country Fine Dining at La Cantera</title>
+  <meta name="description" content="Where 18th-century European elegance meets the Texas Hill Country. Experience Chef John Carpenter's seasonal dinner, tasting menus, and private dining at La Cantera." />
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Single-Line Navbar & Web3Forms Status Patch -->
+  <style>
+    .navbar {
+      width: min(1280px, 95%);
+      padding: 0.7rem 1.4rem;
+      gap: 1rem;
+    }
+    .brand-logo { flex-shrink: 0; }
+    .brand-title { font-size: 1.3rem; letter-spacing: 0.2em; }
+    .brand-subtitle { font-size: 0.55rem; letter-spacing: 0.3em; }
+    .nav-links {
+      gap: clamp(0.9rem, 1.6vw, 1.75rem);
+      align-items: center;
+    }
+    .nav-links li, .nav-links a { white-space: nowrap; }
+    .nav-links a {
+      font-size: 0.73rem;
+      letter-spacing: 0.09em;
+    }
+    .nav-actions {
+      gap: 0.9rem;
+      flex-shrink: 0;
+    }
+    .nav-phone {
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .nav-actions .btn-gold {
+      padding: 0.65rem 1.15rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.11em;
+      white-space: nowrap;
+    }
+    /* 4-Field + Button Horizontal Booking Bar */
+    .booking-bar {
+      grid-template-columns: 1.3fr repeat(3, 1fr) auto;
+    }
+    .form-status {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      text-align: center;
+      display: none;
+    }
+    .form-status.success {
+      display: block;
+      background: rgba(183, 154, 104, 0.14);
+      border: 1px solid #B79A68;
+      color: #F5F1E9;
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(220, 53, 69, 0.15);
+      border: 1px solid rgba(220, 53, 69, 0.5);
+      color: #ffb3b8;
+    }
+    @media (max-width: 992px) {
+      .booking-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Glassmorphic Navigation -->
+  <header class="nav-wrapper">
+    <nav class="navbar">
+      <a href="#hero" class="brand-logo" aria-label="Signature Restaurant Home">
+        <span class="brand-title">SIGNATURE</span>
+        <span class="brand-subtitle">LA CANTERA</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#experience">The Experience</a></li>
+        <li><a href="#menus">Menus</a></li>
+        <li><a href="#tasting">Chef's Tasting</a></li>
+        <li><a href="#private-events">Private Dining</a></li>
+        <li><a href="#hours-location">Hours &amp; Visit</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:2102470176" class="nav-phone">(210) 247-0176</a>
+        <a href="#reserve" class="btn btn-gold">Reserve a Table</a>
+        <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img 
+        src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2000&q=85" 
+        alt="Signature Restaurant Sunset Terrace and Fine Dining" 
+        class="hero-img"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-text-box reveal">
+        <span class="eyebrow">16401 La Cantera Pkwy &bull; San Antonio, Texas</span>
+        <h1>Where Hill Country Views Meet <span class="italic-gold">Culinary Artistry.</span></h1>
+        <p class="hero-lead">
+          Nestled amidst vine-covered pergolas, native rosemary gardens, and sweeping Texas Hill Country vistas, Executive Chef John Carpenter crafts seasonal menus rooted in French-brigade precision.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#reserve" class="btn btn-gold btn-lg">Book a Table</a>
+          <a href="#menus" class="btn btn-outline btn-lg">Explore Seasonal Menus</a>
+        </div>
+      </div>
+
+      <!-- Floating Info Window -->
+      <aside class="hero-floating-card reveal">
+        <div class="floating-card-header">
+          <span class="eyebrow">Tonight at Signature</span>
+          <span class="status-dot">Reservations Open</span>
+        </div>
+        <div class="gold-divider"></div>
+        <div class="floating-card-grid">
+          <div>
+            <h4>Signature Hour</h4>
+            <p>Mon – Fri &bull; 4:30 PM – 6:00 PM</p>
+            <span class="sub-note">At the Bar, Foyer &amp; Mezzanine</span>
+          </div>
+          <div>
+            <h4>Evening Service</h4>
+            <p>Mon – Sat &bull; 5:30 PM – 10:00 PM</p>
+            <span class="sub-note">Sunday Dinner &bull; 5:30 PM – 9:00 PM</span>
+          </div>
+          <div>
+            <h4>Chef's Tasting Menu</h4>
+            <p>Thu – Sat &bull; $150 / Guest</p>
+            <span class="sub-note">Optional $85 Sommelier Pairing</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- The Experience / Story Section -->
+  <section class="section experience-section" id="experience">
+    <div class="container">
+      <div class="experience-grid">
+        <div class="experience-visuals reveal">
+          <div class="image-frame primary-frame">
+            <img 
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" 
+              alt="Signature Restaurant Interior Antiques and Warm Lighting"
+            />
+          </div>
+          <div class="floating-quote-window">
+            <p class="quote-text">
+              “Signature’s unique French-brigade style in the kitchen is collaborative and electric for guests looking into our open kitchen.”
+            </p>
+            <div class="gold-divider-sm"></div>
+            <span class="quote-author">John Carpenter &mdash; Executive Chef</span>
+          </div>
+        </div>
+
+        <div class="experience-copy reveal">
+          <span class="eyebrow">Our Philosophy</span>
+          <h2>18th-Century Elegance. <br/><span class="italic-gold">Organic Texas Soul.</span></h2>
+          <div class="gold-divider"></div>
+          <p>
+            A bohemian curation of American and European antiques fills our dining room, blending old-world warmth with effortless Hill Country charm. Step outdoors beneath vine-draped pergolas where lavender, native flora, and our flourishing kitchen herb garden perfume the evening air.
+          </p>
+          <p>
+            Local and organic ingredients reshape our plates as the seasons peak and wane—from bright Gulf Coast crudo and house-extruded pastas to Texas Wagyu and Axis venison over live fire.
+          </p>
+
+          <div class="pillars-row">
+            <div class="pillar-item">
+              <span class="pillar-num">01</span>
+              <h3>The Herb Garden</h3>
+              <p>Fresh rosemary, thyme, and seasonal botanicals harvested steps from your table.</p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-num">02</span>
+              <h3>The Open Kitchen</h3>
+              <p>CIA-trained culinary leadership executing classical technique with modern Texas bounty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive HTML Menu Section -->
+  <section class="section menu-section" id="menus">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Seasonal Curation</span>
+        <h2>Culinary <span class="italic-gold">Menus</span></h2>
+        <p class="section-subtitle">
+          Crafted with organic, locally sourced ingredients. Designed for seamless browsing without PDF downloads.
+        </p>
+      </div>
+
+      <!-- Floating Menu Filter Tabs -->
+      <div class="menu-tabs-wrapper reveal">
+        <div class="menu-tabs" role="tablist">
+          <button class="menu-tab active" data-target="dinner" role="tab" aria-selected="true">Dinner</button>
+          <button class="menu-tab" data-target="signature-hour" role="tab" aria-selected="false">Signature Hour</button>
+          <button class="menu-tab" data-target="brunch" role="tab" aria-selected="false">Sunday Brunch</button>
+          <button class="menu-tab" data-target="cocktails" role="tab" aria-selected="false">Spirits &amp; Cellar</button>
+        </div>
+      </div>
+
+      <!-- Menu Content Window -->
+      <div class="menu-floating-window reveal">
+        
+        <!-- DINNER MENU -->
+        <div class="menu-panel active" id="dinner">
+          <div class="menu-panel-header">
+            <h3>Seasonal Dinner Service</h3>
+            <span>Monday – Saturday 5:30 PM – 10:00 PM &bull; Sunday 5:30 PM – 9:00 PM</span>
+          </div>
+          <div class="gold-divider"></div>
+
+          <div class="menu-columns">
+            <div class="menu-category">
+              <h4 class="category-title">First Courses</h4>
+              
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Beef Tartare &amp; Bone Marrow</span>
+                  <span class="dish-price">$26</span>
+                </div>
+                <p class="dish-desc">Crème fraîche, smoked trout roe, crispy garlic chips, house focaccia</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Fried Oysters &amp; Caviar</span>
+                  <span class="dish-price">$36</span>
+                </div>
+                <p class="dish-desc">Toasted brioche, heirloom tomato jam, wilted spinach, Meyer lemon hollandaise</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Spanish Octopus</span>
+                  <span class="dish-price">$29</span>
+                </div>
+                <p class="dish-desc">Charred corn, avocado, crispy chickpeas, roasted tomato, bright salsa verde</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Crispy Pork Belly</span>
+                  <span class="dish-price">$28</span>
+                </div>
+                <p class="dish-desc">Poblano creamed corn, house pickled peppers, black garlic molasses</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Texas Quail</span>
+                  <span class="dish-price">$26</span>
+                </div>
+                <p class="dish-desc">Cornbread &amp; venison sausage stuffing, sweet corn pudding, pomegranate reduction</p>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <h4 class="category-title">Main Courses</h4>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Prime Beef Tenderloin</span>
+                  <span class="dish-price">$64</span>
+                </div>
+                <p class="dish-desc">Potato fondant, caramelized onion soubise, roasted maitake mushrooms, truffle jus</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Wagyu Striploin</span>
+                  <span class="dish-price">$78</span>
+                </div>
+                <p class="dish-desc">Caramelized onions &amp; sweet peppers, roasted sunchoke, bone marrow bordelaise</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Seared Diver Scallops</span>
+                  <span class="dish-price">$62</span>
+                </div>
+                <p class="dish-desc">Coconut lemongrass broth, heirloom tomato, wild mushroom, sweety drops, Thai basil</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Axis Venison Loin</span>
+                  <span class="dish-price">$59</span>
+                </div>
+                <p class="dish-desc">Layered potato pavé, glazed baby carrots, dark cherry port jus</p>
+              </div>
+
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Ora King Salmon</span>
+                  <span class="dish-price">$59</span>
+                </div>
+                <p class="dish-desc">Yuzu caper beurre blanc, crispy Brussels sprouts, velvet celery root purée</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIGNATURE HOUR MENU -->
+        <div class="menu-panel" id="signature-hour">
+          <div class="menu-panel-header">
+            <h3>Signature Hour at the Bar &amp; Mezzanine</h3>
+            <span>Monday – Friday &bull; 4:30 PM – 6:00 PM</span>
+          </div>
+          <div class="gold-divider"></div>
+          <div class="menu-columns">
+            <div class="menu-category">
+              <h4 class="category-title">Bar Bites &amp; Small Plates</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">The Signature Burger</span>
+                  <span class="dish-price">$21</span>
+                </div>
+                <p class="dish-desc">Aged Gruyère, caramelized onion, chive aioli, thick-cut bacon, brioche bun</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Truffle Arancini</span>
+                  <span class="dish-price">$16</span>
+                </div>
+                <p class="dish-desc">Crisp saffron &amp; wild mushroom risotto pearls, aged parmesan, black truffle aioli</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Crispy Gulf Oysters</span>
+                  <span class="dish-price">$18</span>
+                </div>
+                <p class="dish-desc">Meyer lemon hollandaise, smoked trout roe, fine herbs</p>
+              </div>
+            </div>
+            <div class="menu-category">
+              <h4 class="category-title">4:30 PM Libations</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Hill Country Old Fashioned</span>
+                  <span class="dish-price">$14</span>
+                </div>
+                <p class="dish-desc">Texas bourbon, black garlic &amp; demerara reduction, angostura &amp; orange oils</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Garden Rosemary Spritz</span>
+                  <span class="dish-price">$13</span>
+                </div>
+                <p class="dish-desc">Botanical gin, garden rosemary cordial, grapefruit, Brut Champagne</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Sommelier's Pour</span>
+                  <span class="dish-price">$12</span>
+                </div>
+                <p class="dish-desc">Daily curated Old &amp; New World glass selections from our award-winning cellar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUNDAY BRUNCH MENU -->
+        <div class="menu-panel" id="brunch">
+          <div class="menu-panel-header">
+            <h3>Sunday Hill Country Brunch</h3>
+            <span>Every Sunday &bull; 10:00 AM – 1:30 PM</span>
+          </div>
+          <div class="gold-divider"></div>
+          <div class="menu-columns">
+            <div class="menu-category">
+              <h4 class="category-title">Brunch Classics</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Foie Gras Pain Perdu</span>
+                  <span class="dish-price">$39</span>
+                </div>
+                <p class="dish-desc">Macerated strawberry, candied Texas pecan, sunny quail eggs, rosemary-maple jus</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Buttermilk Fried Texas Quail</span>
+                  <span class="dish-price">$32</span>
+                </div>
+                <p class="dish-desc">Flaky buttermilk biscuit, rich venison sausage gravy, two sunny farm eggs</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Pork Belly Benedict</span>
+                  <span class="dish-price">$26</span>
+                </div>
+                <p class="dish-desc">House biscuit, pimento cheese, bourbon maple glaze, spinach, citrus hollandaise</p>
+              </div>
+            </div>
+            <div class="menu-category">
+              <h4 class="category-title">From the Grill &amp; Sea</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Prime Steak &amp; Eggs</span>
+                  <span class="dish-price">$44</span>
+                </div>
+                <p class="dish-desc">6 oz. prime beef tenderloin, smoked bacon, biscuit, chimichurri potatoes, béarnaise</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Seared Scallops &amp; Risotto</span>
+                  <span class="dish-price">$59</span>
+                </div>
+                <p class="dish-desc">Charred corn &amp; leek risotto, avocado, sunny egg, bright salsa verde</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">French Press &amp; Fresh Juices</span>
+                  <span class="dish-price">$9 – $17</span>
+                </div>
+                <p class="dish-desc">Single-origin French press service and cold-pressed seasonal citrus juices</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPIRITS & CELLAR -->
+        <div class="menu-panel" id="cocktails">
+          <div class="menu-panel-header">
+            <h3>Spirits, Craft Cocktails &amp; Wine Cellar</h3>
+            <span>Curated Pairings &amp; Rare Vintages</span>
+          </div>
+          <div class="gold-divider"></div>
+          <div class="menu-columns">
+            <div class="menu-category">
+              <h4 class="category-title">Signature Cocktails</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">La Cantera Dusk</span>
+                  <span class="dish-price">$19</span>
+                </div>
+                <p class="dish-desc">Reposado tequila, blood orange, charred pineapple, guajillo chili tincture</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">The Botanist's Study</span>
+                  <span class="dish-price">$18</span>
+                </div>
+                <p class="dish-desc">Garden lavender-infused gin, dry vermouth, elderflower, lemon twist</p>
+              </div>
+            </div>
+            <div class="menu-category">
+              <h4 class="category-title">Caviar &amp; Champagne</h4>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Russian Royal Caviar Service</span>
+                  <span class="dish-price">Market</span>
+                </div>
+                <p class="dish-desc">Traditional accompaniments, warm brioche blinis, crème fraîche, chives</p>
+              </div>
+              <div class="dish-item">
+                <div class="dish-header">
+                  <span class="dish-name">Reserve Wine List</span>
+                  <span class="dish-price">By Bottle</span>
+                </div>
+                <p class="dish-desc">Over 400 selections spanning Napa Valley cult cabernets, Burgundy, and Bordeaux</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Chef's Tasting Menu Highlight Banner -->
+  <section class="section tasting-section" id="tasting">
+    <div class="container">
+      <div class="tasting-floating-card reveal">
+        <div class="tasting-content">
+          <span class="eyebrow">Thursday – Saturday Evenings</span>
+          <h2>An Evening Curated, <span class="italic-gold">Course by Course.</span></h2>
+          <div class="gold-divider"></div>
+          <p>
+            Chef John Carpenter’s seasonal Tasting Menu is designed to unfold with intention—moving from bright coastal crudo such as Hamachi with coconut leche de tigre and Ora King Salmon with guajillo chili oil to rich Texas Wagyu and warm corn cake with petits fours.
+          </p>
+          <div class="tasting-pricing">
+            <div class="price-pill">
+              <span class="price-val">$150</span>
+              <span class="price-label">Per Guest</span>
+            </div>
+            <div class="price-pill">
+              <span class="price-val">+$85</span>
+              <span class="price-label">Sommelier Wine Pairing</span>
+            </div>
+          </div>
+          <p class="fine-print">*Menu evolves every three weeks to reflect peak micro-seasons. Full table participation kindly requested.</p>
+          <a href="#reserve" class="btn btn-gold">Reserve the Tasting Experience</a>
+        </div>
+        <div class="tasting-image-wrap">
+          <img 
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85" 
+            alt="Chef John Carpenter Seasonal Tasting Plate"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Ticket Private Dining & Events Section (WEB3FORMS #1) -->
+  <section class="section private-section" id="private-events">
+    <div class="container">
+      <div class="private-grid">
+        <div class="private-info reveal">
+          <span class="eyebrow">Private Dining &amp; Special Events</span>
+          <h2>Unforgettable Gatherings <span class="italic-gold">Under the Pergolas.</span></h2>
+          <div class="gold-divider"></div>
+          <p>
+            From intimate rehearsal dinners and executive board retreats to full-restaurant buyouts overlooking the Hill Country, Signature provides an unmatched backdrop of antique grandeur and culinary theater.
+          </p>
+          <ul class="private-features">
+            <li><span>&mdash;</span> Custom multi-course menus &amp; sommelier wine pairings</li>
+            <li><span>&mdash;</span> Private mezzanine, wine room, and garden terrace buyouts</li>
+            <li><span>&mdash;</span> Dedicated event concierge at La Cantera Resort &amp; Spa</li>
+          </ul>
+          <div class="direct-contact-box">
+            <span>Direct Event Concierge:</span>
+            <a href="mailto:SATCN_SignatureLeadership@hilton.com">SATCN_SignatureLeadership@hilton.com</a>
+          </div>
+        </div>
+
+        <!-- Floating Private Event Inquiry Window -->
+        <div class="private-form-window reveal">
+          <h3>Inquire About Private Dining</h3>
+          <p>Our events leadership team will respond within 24 hours with availability and bespoke menu packages.</p>
+          <div class="gold-divider"></div>
+
+          <form class="luxe-form web3-ajax-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- REPLACE WITH PRIVATE EVENTS ACCESS KEY -->
+            <input type="hidden" name="access_key" value="2d0d1773-8348-4e2c-8493-45ec69902903" />
+            <input type="hidden" name="subject" value="[PRIVATE EVENT INQUIRY] Signature Restaurant" />
+            <input type="hidden" name="from_name" value="Signature Private Dining Portal" />
+            <input type="checkbox" name="botcheck" style="display: none;" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guestName">Full Name</label>
+                <input type="text" id="guestName" name="Client_Name" placeholder="Evelyn Vance" required />
+              </div>
+              <div class="form-group">
+                <label for="guestEmail">Email Address</label>
+                <input type="email" id="guestEmail" name="email" placeholder="evelyn@company.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventType">Occasion</label>
+                <select id="eventType" name="Event_Occasion">
+                  <option value="Rehearsal Dinner / Bridal Celebration">Rehearsal Dinner / Bridal Celebration</option>
+                  <option value="Executive / Corporate Dinner">Executive / Corporate Dinner</option>
+                  <option value="Anniversary / Milestone Party">Anniversary / Milestone Party</option>
+                  <option value="Full Restaurant or Patio Buyout">Full Restaurant or Patio Buyout</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="guestCount">Estimated Guests</label>
+                <input type="number" id="guestCount" name="Guest_Count" placeholder="24" min="8" max="200" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="eventNotes">Preferred Date &amp; Notes</label>
+              <textarea id="eventNotes" name="Event_Details" rows="3" placeholder="Tell us about your preferred date, indoor/terrace preference, or wine pairing interests..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-full">Request Private Dining Brochure</button>
+            <div class="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservations & Location Section (WEB3FORMS #2) -->
+  <section class="section reserve-section" id="reserve">
+    <div class="container">
+      <div class="reserve-window reveal" id="hours-location">
+        <div class="reserve-header">
+          <span class="eyebrow">Join Us at Our Table</span>
+          <h2>Reserve Your <span class="italic-gold">Evening</span></h2>
+          <p>Reservations are strongly recommended, particularly for sunset terrace seating and weekend Tasting Menus.</p>
+        </div>
+
+        <!-- Interactive Reservation Bar (Web3Forms Integration) -->
+        <form class="booking-bar web3-ajax-form" action="https://api.web3forms.com/submit" method="POST">
+          <!-- REPLACE WITH RESERVATIONS ACCESS KEY -->
+          <input type="hidden" name="access_key" value="2d0d1773-8348-4e2c-8493-45ec69902903" />
+          <input type="hidden" name="subject" value="[TABLE RESERVATION REQUEST] Signature Restaurant" />
+          <input type="hidden" name="from_name" value="Signature Host Desk" />
+          <input type="checkbox" name="botcheck" style="display: none;" />
+
+          <div class="booking-field">
+            <label for="resGuestInfo">Name &amp; Mobile</label>
+            <input type="text" id="resGuestInfo" name="Guest_Name_and_Phone" placeholder="Name &amp; Phone #" required />
+          </div>
+          <div class="booking-field">
+            <label for="resDate">Date</label>
+            <input type="date" id="resDate" name="Requested_Date" required />
+          </div>
+          <div class="booking-field">
+            <label for="resTime">Time</label>
+            <select id="resTime" name="Requested_Time">
+              <option value="5:30 PM">5:30 PM</option>
+              <option value="6:00 PM">6:00 PM</option>
+              <option value="6:30 PM">6:30 PM</option>
+              <option value="7:00 PM" selected>7:00 PM</option>
+              <option value="7:30 PM">7:30 PM</option>
+              <option value="8:00 PM">8:00 PM</option>
+              <option value="8:30 PM">8:30 PM</option>
+            </select>
+          </div>
+          <div class="booking-field">
+            <label for="resGuests">Guests</label>
+            <select id="resGuests" name="Party_Size">
+              <option value="2 Guests">2 Guests</option>
+              <option value="3 Guests">3 Guests</option>
+              <option value="4 Guests">4 Guests</option>
+              <option value="5 Guests">5 Guests</option>
+              <option value="6 Guests">6 Guests</option>
+              <option value="8+ Guests (VIP)">8+ (Call Concierge)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-gold">Request Table</button>
+          <div class="form-status" style="grid-column: 1 / -1;" aria-live="polite"></div>
+        </form>
+
+        <div class="gold-divider"></div>
+
+        <div class="location-details-grid">
+          <div class="loc-block">
+            <h4>Location</h4>
+            <p>16401 La Cantera Pkwy<br/>San Antonio, TX 78256</p>
+            <a href="https://maps.app.goo.gl/Xmx4WXbwSpoZb1vy8" target="_blank" rel="noopener" class="gold-link">Get Google Maps Directions &rarr;</a>
+          </div>
+          <div class="loc-block">
+            <h4>Hours of Operation</h4>
+            <p><strong>Dinner:</strong> Mon – Sat: 5:30 PM – 10:00 PM</p>
+            <p><strong>Sunday Dinner:</strong> 5:30 PM – 9:00 PM</p>
+            <p><strong>Sunday Brunch:</strong> 10:00 AM – 1:30 PM</p>
+            <p><strong>Signature Hour:</strong> Mon – Fri: 4:30 PM – 6:00 PM</p>
+          </div>
+          <div class="loc-block">
+            <h4>Contact &amp; Valet</h4>
+            <p><strong>Phone:</strong> <a href="tel:2102470176">(210) 247-0176</a></p>
+            <p><strong>Events:</strong> SATCN_SignatureLeadership@hilton.com</p>
+            <p class="sub-note">Complimentary &amp; valet parking available at La Cantera Resort entrance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-title">SIGNATURE</span>
+        <span class="brand-subtitle">AT LA CANTERA RESORT &amp; SPA</span>
+      </div>
+      <p class="copyright">&copy; 2026 Signature Restaurant. All Rights Reserved. Website by keystonecraftweb@gmail.com.</p>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile Action Bar for High Conversion -->
+  <div class="mobile-sticky-bar">
+    <a href="#menus" class="btn btn-outline">View Menu</a>
+    <a href="#reserve" class="btn btn-gold">Reserve Table</a>
+  </div>
+
+  <!-- Interactive UI & Web3Forms AJAX Handler -->
+  <script>
+    // 1. Set default reservation date to today
+    const dateInput = document.getElementById('resDate');
+    if (dateInput) {
+      dateInput.valueAsDate = new Date();
+    }
+
+    // 2. Interactive Menu Tabs
+    const tabs = document.querySelectorAll('.menu-tab');
+    const panels = document.querySelectorAll('.menu-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const target = document.getElementById(tab.dataset.target);
+        if (target) target.classList.add('active');
+      });
+    });
+
+    // 3. Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      mobileToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        mobileToggle.classList.remove('active');
+      });
+    });
+
+    // 4. Smooth Scroll Reveal Observer
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 5. Web3Forms Seamless AJAX Submission
+    document.querySelectorAll('.web3-ajax-form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const statusBox = form.querySelector('.form-status');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusBox.className = 'form-status';
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: json
+          });
+          const result = await response.json();
+          if (response.status === 200) {
+            statusBox.textContent = 'Thank you. Our concierge team has received your request and will confirm shortly.';
+            statusBox.classList.add('success');
+            form.reset();
+            if (dateInput) dateInput.valueAsDate = new Date();
+          } else {
+            statusBox.textContent = result.message || 'Unable to submit right now. Please call (210) 247-0176.';
+            statusBox.classList.add('error');
+          }
+        } catch (error) {
+          statusBox.textContent = 'Network error. Please call our concierge directly at (210) 247-0176.';
+          statusBox.classList.add('error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
